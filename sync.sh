@@ -1,6 +1,4 @@
 #!/bin/bash
-# Source Vars
-source $CONFIG
 
 cd /tmp/rom
 
@@ -10,6 +8,6 @@ git config --global user.name "Orkun Ergun"
 git config --global color.ui true
 
 # sync rom
-repo init --depth=1 --no-repo-verify -u $ROM_LINK -b $ROM_BRANCH -g default,-mips,-darwin,-notdefault
-git clone https://gitlab.com/68orkun/local_manifest.git --depth 1 -b $DEVICE_BRANCH .repo/local_manifests
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -q -j8
+repo init --depth=1 --no-repo-verify -u https://github.com/CherishOS/android_manifest -b twelve-one -g default,-mips,-darwin,-notdefault
+git clone https://gitlab.com/68orkun/local_manifest.git --depth 1 -b A12 .repo/local_manifests
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
