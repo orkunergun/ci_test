@@ -22,3 +22,5 @@ task:
       - bash lunch.sh      
     build_script:
       - bash build.sh
+    upload_script:
+      - bash uccache.sh
