@@ -4,7 +4,7 @@ env:
     
 task:
     name: lava-aosp
-    timeout_in: 4h
+    timeout_in: 120m
     container:
       image: aarunalr/aosp-build
       cpu: 8
