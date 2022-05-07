@@ -11,12 +11,12 @@ task:
       memory: 32g
     
     setup_script:
-      - bash setup
+      - bash setup.sh
     dccache_script:
-      - bash dccache
+      - bash dccache.sh
     sync_script:
-      - bash sync
+      - bash sync.sh
     build_script:
-      - bash build
+      - bash build.sh
     upload_script:
-      - bash uccache
+      - bash uccache.sh
