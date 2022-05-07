@@ -1,0 +1,16 @@
+env:
+    CIRRUS_CLONE_DEPTH: 1
+    CIRRUS_WORKING_DIR: "/tmp/ci"
+    
+task:
+    name: lavamoment
+    timeout_in: 4h
+    container:
+      image: aarunalr/aosp-build
+      cpu: 8
+      memory: 32g
+    
+    setup_script:
+      - bash setup
+    build_script:
+      - bash build
