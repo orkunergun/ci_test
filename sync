@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p /tmp/aosp # Where to sync source
-cd /tmp/aosp
+mkdir -p /tmp/blaze # Where to sync source
+cd /tmp/blaze
 
 # Repo init command
 repo init -q --no-repo-verify --depth 1 -u https://github.com/ProjectBlaze/manifest.git -b 12.1 -g default,-mips,-darwin,-notdefault
