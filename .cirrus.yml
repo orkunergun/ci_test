@@ -3,7 +3,7 @@ env:
     CIRRUS_WORKING_DIR: "/tmp/ci"
     #13
 task:
-    name: mwe
+    name: lavaaosp
     timeout_in: 130m
     container:
       image: aarunalr/aosp-build
