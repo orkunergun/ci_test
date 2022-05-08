@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mkdir -p /tmp/aosp # Where to sync source
+cd /tmp/aosp
+
+# Repo init command
+repo init -q --no-repo-verify --depth 1 -u https://github.com/ProjectBlaze/manifest.git -b 12.1 -g default,-mips,-darwin,-notdefault
+
+# Local manifest
+git clone https://gitlab.com/68orkun/local_manifest.git --depth 1 -b blaze .repo/local_manifests
+
+# Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j1 --fail-fast
