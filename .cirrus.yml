@@ -9,8 +9,6 @@ task:
       image: aarunalr/aosp-build
       cpu: 8
       memory: 32g
-    
-    setup_script:
-      - bash setup
+      
     build_script:
       - bash build
