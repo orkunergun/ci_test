@@ -1,41 +1,23 @@
 #!/bin/bash
-cd /tmp/aosp
+cd /tmp/rom
 
-# Normal build steps
-. build/envsetup.sh
-lunch blaze_lava-userdebug
-export CCACHE_DIR=/tmp/ccache
-export CCACHE_EXEC=$(which ccache)
-export USE_CCACHE=1
-ccache -M 10G
-ccache -o compression=true
-ccache -z
+ROM_LINK=https://github.com/ProjectBlaze/manifest
+ROM_BRANCH=12.1
+DEVICE_BRANCH=blaze
+DEVICE_LUNCH=blaze_lava-userdebug
 
-#and dont use below codes for first 1 or 2 times, to get ccache uploaded,
+# git configs
+git config --global user.email "orkun68100@gmail.com"
+git config --global user.name "Orkun Ergun"
+git config --global color.ui true
+
+# sync rom
+repo init --depth=1 --no-repo-verify -u ${ROM_LINK} -b ${ROM_BRANCH} -g default,-mips,-darwin,-notdefault
+git clone https://gitlab.com/68orkun/local_manifest.git --depth 1 -b ${DEVICE_BRANCH} .repo/local_manifests
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+
+source build/envsetup.sh
+lunch ${DEVICE_LUNCH}
 brunch lava
-# upload function for uploading rom zip file! I don't want unwanted builds in my google drive haha!
-# up(){
-#	curl --upload-file $1 http://oshi.at/nossl
-#	# 3 days, 5 GB limit
-# }
 
-# It's recommended to use google drive(rclone) as upload solution for coping with the time limit. Un-comment next 3 lines to upload with rclone in drive. Also change apon and junk according to your config name, uploading folder of drive
-#up(){
-#	time rclone copy $1 xd:junk -P # apon is my rclone config name,
-#}
-
-# tg(){
-# 	bot_api=#5176662048:AAG8r7foiKyMGbvUNncqzg1t1QwdDSz4OTA
-#	your_telegram_id=$1
-#	msg=$2	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
-# }
-
-# id=#
-
-
-# Upload rom zip file if succeed to build! Send notification to tg! And send shell to tg if build fails!
-if [ -e out/target/product/juice/pixel.*.zip ]; then
-send_zip=$(up out/target/product/juice/pixel.*.zip) && tg $id "Build Succeed!
-$send_zip"
-fi
-ccache -s # Let's print ccache statistics finally
+curl -T *.zip https://oshi.at/ccache.zip/129600
