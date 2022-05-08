@@ -3,8 +3,7 @@ env:
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: "/tmp/ci"
     CIRRUS_SHELL: bash
-    rclone_config: "ENCRYPTED[4a012988845daa2cb608fa37f38fa6b1c4b88c48e3c9506de054f224ec94609fdb89b212c41f18e23008aa1d357e3a3e]"
-    
+
 task:
     name: lavaaosp
     timeout_in: 4h
