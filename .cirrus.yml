@@ -4,6 +4,7 @@ env:
     CIRRUS_WORKING_DIR: "/tmp/ci"
     CIRRUS_SHELL: bash
     
+    
 task:
     name: lavaaosp
     timeout_in: 4h
