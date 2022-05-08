@@ -10,7 +10,8 @@ task:
       cpu: 8
       memory: 32g
       
-    build_script:
-      - bash build
     sync_script:
       - bash sync
+
+    build_script:
+      - bash build
