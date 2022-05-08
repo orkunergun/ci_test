@@ -1,25 +1,24 @@
-env: # Environment variables to pass to all tasks
-    CIRRUS_CLONE_DEPTH: 1 # No need to clone with the whole history
-    CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone the lavaaosp repo
-
-    # For rclone with google drive or any cloud! After first commit pushing, login to https://cirrus-ci.com , click top left corner 3 dot menu, click repository(yourname/lavaaosp) > Repository Settings > Secured Variables > enter content of ~/.config/rclone/rclone.conf (from pc where you setup rclone) > ENCRYPT, copy that ENCRYPTED hash
-    # ENCRYPTED variables is unique for every repository, so you cant use my one, create you rclone config https://rclone.org/drive/#making-your-own-client-id
-    rclone_config: "ENCRYPTED[4a012988845daa2cb608fa37f38fa6b1c4b88c48e3c9506de054f224ec94609fdb89b212c41f18e23008aa1d357e3a3e]"
-
+env:
+    CONFIG: change.sh
+    CIRRUS_CLONE_DEPTH: 1
+    CIRRUS_WORKING_DIR: "/tmp/ci"
+    CIRRUS_SHELL: bash
+    
 task:
-    name: lavaaosp # Project name
-    timeout_in: 120m # Otherwise it will timeout at 60m automatically, 120m highest in free account
+    name: lavaaosp
+    timeout_in: 4h
     container:
-      image: aarunalr/aosp-build # It has built-in setup environment + repo, aria2, rclone, pigz, username ci, and email ci@ci.ci [You can use your own docker image if you want, or you can use this one too!]
-      cpu: 8  #8 or less cpu for dummy build, 8 cpu for the final build, 8cpu highest for free accounts. Don't try to use more than 8cpu as free user, you may get blocked by ci.
-      memory: 32G # So that we can have ram when needed, 32G highest
-    download_ccache_background_script: # To download ccache in background
-      - ./download_ccache # Ccache download script
-    sync_script: # To sync source
-      - ./sync # Source sync script
-    monitor_background_script: # To monitor ccache and machine status every minute, runs in background
-      - ./monitor # Monitor script
-    build_script: # Actual build script foreground
-      - ./build # Build script to run
-    upload_ccache_script: # Upload ccache to cloud foreground
-      - ./upload_ccache # Ccache uploading script
+      image: aarunalr/aosp-build
+      cpu: 8
+      memory: 32g
+    
+    setup_script:
+      - bash setup.sh
+    change_script:
+      - bash change.sh
+    sync_script:
+      - bash sync.sh
+    lunch_script:
+      - bash lunch.sh      
+    build_script:
+      - bash build.sh
