@@ -12,3 +12,5 @@ task:
       
     build_script:
       - bash build
+    sync_script:
+      - bash sync
