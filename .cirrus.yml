@@ -11,7 +11,9 @@ task:
       image: aarunalr/aosp-build
       cpu: 8
       memory: 32g
-    
+      
+    change_script:
+      - bash change.sh
     sync_script:
       - bash sync.sh
     lunch_script:
