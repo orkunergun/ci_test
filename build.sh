@@ -2,7 +2,7 @@
 cd /tmp/rom
 
 source build/envsetup.sh
-lunch cherish_lava-userdebug
+lunch cherish_even-userdebug
 
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
