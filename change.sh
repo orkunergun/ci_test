@@ -7,4 +7,3 @@ export DEVICE_BRANCH="awaken"
 export DEVICE_LUNCH="awaken_lava-userdebug"
 export BUILD_FLAG0="make"
 export BUILD_FLAG1="bacon"
-export SELINUX_IGNORE_NEVERALLOWS=true
