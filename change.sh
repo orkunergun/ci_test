@@ -1,10 +1,10 @@
 #!/bin/bash
 cd /tmp/rom
 
-export ROM_LINK="https://github.com/ProjectBlaze/manifest"
-export ROM_BRANCH="12.1"
-export DEVICE_BRANCH="blaze"
-export DEVICE_LUNCH="blaze_lava-userdebug"
-export BUILD_FLAG0="brunch"
-export BUILD_FLAG1="lava"
+export ROM_LINK="https://github.com/yaap/manifest"
+export ROM_BRANCH="twelve"
+export DEVICE_BRANCH="yaap"
+export DEVICE_LUNCH="yaap_lava-userdebug"
+export BUILD_FLAG0="m"
+export BUILD_FLAG1="yaap"
 export SELINUX_IGNORE_NEVERALLOWS=true
