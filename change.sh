@@ -1,10 +1,10 @@
 #!/bin/bash
 cd /tmp/rom
 
-export ROM_LINK="https://github.com/Evolution-X/manifest"
-export ROM_BRANCH="snow"
-export DEVICE_BRANCH="evo"
-export DEVICE_LUNCH="evolution_lava-userdebug"
-export BUILD_FLAG0="mka"
-export BUILD_FLAG1="evolution"
+export ROM_LINK="https://github.com/BlissRoms/platform_manifest"
+export ROM_BRANCH="arcadia-next"
+export DEVICE_BRANCH="bliss"
+export DEVICE_LUNCH="bliss_lava-userdebug"
+export BUILD_FLAG0="blissify"
+export BUILD_FLAG1="-c lava"
 export SELINUX_IGNORE_NEVERALLOWS=true
