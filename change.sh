@@ -7,4 +7,4 @@ export DEVICE_BRANCH="fusion"
 export DEVICE_LUNCH="fuse_lava-userdebug"
 export BUILD_FLAG0="make"
 export BUILD_FLAG1="fuse-prod"
-export SELINUX_IGNORE_NEVERALLOWS=true
+export SELINUX_IGNORE_NEVERALLOWS=true 
