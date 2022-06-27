@@ -7,4 +7,3 @@ export DEVICE_BRANCH="crdroid"
 export DEVICE_LUNCH="lineage_lava-userdebug"
 export BUILD_FLAG0="brunch"
 export BUILD_FLAG1="lava"
-export SELINUX_IGNORE_NEVERALLOWS=true
